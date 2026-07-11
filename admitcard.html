@@ -2,44 +2,64 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admit Card</title>
+<title>Admit Card Upload</title>
+
 <style>
 body{
-margin:0;
-background:#f2f2f2;
 font-family:Arial;
+background:#f2f2f2;
 text-align:center;
+padding:20px;
 }
+
 img{
 width:95%;
 max-width:900px;
 margin-top:20px;
+display:none;
 border:1px solid #000;
 }
+
 button{
-margin:20px;
 padding:12px 20px;
 background:#0056A6;
-color:#fff;
+color:white;
 border:none;
 border-radius:5px;
-font-size:16px;
-cursor:pointer;
+margin-top:20px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<h2>Junior Assistant Skill Test</h2>
+<h2>Upload Admit Card</h2>
 
-<img src="admitcard.jpg" alt="Admit Card">
+<input type="file" id="upload" accept="image/*">
+
+<br><br>
+
+<img id="preview">
 
 <br>
 
-<button onclick="window.print()">
-Print Admit Card
-</button>
+<button onclick="window.print()">Print</button>
+
+<script>
+document.getElementById("upload").onchange=function(e){
+
+const file=e.target.files[0];
+
+if(file){
+
+document.getElementById("preview").src=URL.createObjectURL(file);
+
+document.getElementById("preview").style.display="block";
+
+}
+
+}
+</script>
 
 </body>
 </html>
